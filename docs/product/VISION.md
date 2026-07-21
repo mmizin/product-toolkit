@@ -166,7 +166,7 @@ Product Requirement Engine rather than PRD Generator.
 Phase 0 — Contract         VISION.md, templates/PRD.md,
                            references/PRD-CONTRACT-RULES.md      ✅
 Phase 1 — Engine           .claude-plugin/, skills/prd-engine/   ✅
-Phase 2 — Review           agents/product-reviewer.md            ← next
+Phase 2 — Review           agents/product-reviewer.md            ✅
 ```
 
 The reviewer comes last by design: a reviewer can only check against a standard

@@ -54,8 +54,8 @@ never a third option.
 - Architecture Toolkit — when the question is architectural rather than
   product. The PRD is the handoff artifact; this skill does not answer it.
 - `product-reviewer` — when the question is whether the product decisions are
-  good, rather than whether the document obeys the contract. Not yet
-  implemented; until then, say so rather than attempting the review.
+  good, rather than whether the document obeys the contract. Judging the
+  product is not this skill's job even when the answer seems obvious.
 
 ## Validation is contract compliance, not product review
 
@@ -65,6 +65,9 @@ This distinction defines the skill's edge and must not blur:
 |---|---|---|
 | `prd-engine` | Does this document obey the PRD contract? | Deterministic, checkable |
 | `product-reviewer` | Are these good product decisions? | Semantic, judgement |
+
+The reviewer assumes conformance. Escalate a non-conformant PRD back through
+Validate before review, not to the reviewer.
 
 Contract validation is closer to a linter than a review. "NFR-003 has no
 threshold" is this skill's finding. "NFR-003's threshold is unrealistic" is not

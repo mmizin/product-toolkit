@@ -5,9 +5,9 @@ functionality, reverse engineers them from systems that already exist, and
 validates them against a fixed contract — so the output is a structured artifact
 architecture tooling can consume, not prose.
 
-> **Status: v0.1 — contract and engine complete.** The PRD contract, its twelve
-> enforcement rules, and the `prd-engine` skill are implemented and validated
-> against a real system across all four operations.
+> **Status: v0.2 — contract, engine, and reviewer complete.** All three are
+> validated against real systems: the contract across three fill passes, the
+> engine across four operations, the reviewer across two PRDs.
 
 ## The idea
 
@@ -44,7 +44,7 @@ because it reads as success.
 ### Skills
 | Skill | Purpose |
 |-------|---------|
-| `prd-engine` | Create, recover, and validate PRDs against the contract. |
+| `prd-engine` | Create, recover, update, and validate PRDs against the contract. |
 
 Named an engine rather than a generator because generation is one of four
 operations:
@@ -56,16 +56,28 @@ operations:
 | Update | An existing PRD + what changed | Revised PRD + changed-ID summary |
 | Validate | An existing PRD | Conformance report against R-001…R-012 |
 
-**Validation here means contract compliance, not product review.** "NFR-003 has
-no threshold" is a contract finding. "NFR-003's threshold is unrealistic"
-requires domain judgement and belongs to the future `product-reviewer` agent.
-If a check needs judgement to answer, it is not a contract check.
+### Agents
+| Agent | Purpose |
+|-------|---------|
+| `product-reviewer` | Independent critique of a PRD's product reasoning. Read-only. |
+
+The engine and the reviewer split along one line:
+
+| | Question | Nature |
+|---|---|---|
+| `prd-engine` | Does this document obey the contract? | Deterministic |
+| `product-reviewer` | Are these good product decisions? | Judgement |
+
+*"NFR-003 has no threshold"* is a contract finding. *"NFR-003's 50ms threshold is
+unachievable given C-002"* is a review finding. If a check can be answered
+without domain knowledge, the reviewer does not make it.
 
 ### Contract
 | Artifact | Role |
 |---|---|
 | `templates/PRD.md` | The shape a PRD takes |
 | `references/PRD-CONTRACT-RULES.md` | The rules the engine enforces (R-001…R-012) |
+| `references/product-review-checklist.md` | The bar the reviewer judges against |
 | `docs/product/VISION.md` | Purpose, scope, boundaries |
 
 Filling every section is **not** conformance. The classification and
@@ -80,14 +92,18 @@ product-toolkit/
 │   └── plugin.json
 ├── skills/
 │   └── prd-engine/SKILL.md
+├── agents/
+│   └── product-reviewer.md
 ├── templates/
 │   └── PRD.md                          ← output shape
 ├── references/
-│   └── PRD-CONTRACT-RULES.md           ← runtime governance
+│   ├── PRD-CONTRACT-RULES.md           ← runtime governance
+│   └── product-review-checklist.md
 ├── docs/
 │   ├── product/                        ← human-facing only
 │   │   ├── VISION.md
 │   │   ├── ENGINE-VALIDATION.md
+│   │   ├── REVIEWER-VALIDATION.md
 │   │   └── BACKLOG.md
 │   ├── examples/
 │   │   └── architecture-discovery/     ← validation fixture, not a feature
@@ -130,11 +146,9 @@ time.
 
 ## Roadmap
 
-- **v0.1** — PRD contract, enforcement rules, `prd-engine` (this release).
-- **v0.2** — `product-reviewer` agent for semantic review (are the goals
-  meaningful, requirements non-contradictory, assumptions safe, metrics
-  realistic); deeper Mode B discovery. Contract validation stays in
-  `prd-engine`.
+- **v0.1** — PRD contract, enforcement rules, `prd-engine`.
+- **v0.2** — `product-reviewer` agent for semantic review (this release);
+  deeper Mode B discovery.
 - **v0.3+** — requirements validation across multiple PRDs; explicit handoff
   verification with Architecture Toolkit.
 
