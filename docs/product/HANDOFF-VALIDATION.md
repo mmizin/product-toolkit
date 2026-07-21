@@ -188,15 +188,47 @@ Two mappings need a human, and one of them was wrong in this document before the
 experiment ran. That is the value of fixing criteria in advance — D-1 would
 otherwise have been quietly reinterpreted as a success.
 
-### Open items
+### Open items — none belong to Product Toolkit
 
-Recorded, not fixed. Each needs its own validation cycle.
+All three findings are **interpretation** problems on the consuming side, not
+defects in the PRD contract. None is fixed here, and none should be.
 
-- **D-1** — Correct the Goals → §1 mapping. Quality goals derive from NFRs;
-  product Goals feed the requirements overview.
-- **D-2** — Decide whether a Business Rule declares its own kind, or whether the
-  consumer decides. Same shape as the Phase 0 classification ambiguities, which
-  were resolved by adding a decision rule.
-- **D-3** — Non Goals has no architecture destination. Either accept the loss
-  explicitly, or raise it with Architecture Toolkit as a template gap on their
-  side.
+| | Finding | Owner |
+|---|---|---|
+| D-1 | `Goals → §1 quality goals` is wrong; quality goals derive from NFRs | Architecture Toolkit — mapping rule |
+| D-2 | A Business Rule may be a domain invariant or an architectural constraint | Architecture Toolkit — interpretation rule |
+| D-3 | Non Goals has no arc42 destination | Architecture Toolkit — scope handling |
+
+The reasoning is the same in each case: the PRD states a product fact correctly.
+Deciding which arc42 section that fact belongs in is architectural
+interpretation, and Product Toolkit has no standing to make it.
+
+D-2 is worth stating precisely, because it looks like the Phase 0 BR-vs-AC
+ambiguity and is not. That one was a real contract defect: the PRD itself could
+not decide where a statement belonged. Here the PRD is unambiguous — BR-001 is a
+business rule, correctly classified. What is ambiguous is whether the *consumer*
+should treat it as §2 or §8. Adding a "kind" field to Business Rules would push
+arc42's taxonomy back into the PRD, which is the wrong direction.
+
+### The finding underneath all three
+
+This experiment's mapping table encodes arc42 section numbers into a Product
+Toolkit document. That was necessary to run the test, and it is not sustainable:
+it means Product Toolkit knows the consumer's format, and any arc42 change makes
+a Product Toolkit file wrong.
+
+The correct shape is neither toolkit knowing the other:
+
+```
+Product Toolkit          Handoff contract          Architecture Toolkit
+  knows PRD        →   knows both, owns the   →      knows arc42
+  knows nothing         mapping rules                knows nothing
+  about arc42                                        about PRD authoring
+```
+
+D-1, D-2, and D-3 are all instances of the same absence: **there is no handoff
+contract, so mapping knowledge has nowhere to live and leaks into whichever
+document is being written.**
+
+Deciding whether that contract should exist, and where it lives, is the real
+next step — not expanding either toolkit. Recorded as B-003.
