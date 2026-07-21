@@ -5,9 +5,12 @@ functionality, reverse engineers them from systems that already exist, and
 validates them against a fixed contract — so the output is a structured artifact
 architecture tooling can consume, not prose.
 
-> **Status: v0.2 — contract, engine, and reviewer complete.** All three are
+> **Status: v0.3 — contract, engine, reviewer, and verified handoff.** Each
 > validated against real systems: the contract across three fill passes, the
-> engine across four operations, the reviewer across two PRDs.
+> engine across four operations, the reviewer across two PRDs, the handoff
+> against criteria fixed before the experiment ran.
+>
+> Not yet validated by anyone who did not build it — see v0.4.
 
 ## The idea
 
@@ -26,9 +29,15 @@ Architecture Toolkit
 Implementation
 ```
 
-The PRD is not a document template — it is the **interface** between the two
-toolkits. [Architecture Toolkit](https://github.com/mmizin/architecture-toolkit)
-reads it; it never writes to it.
+The PRD is not a document template — it is a structured artifact with stable
+requirement IDs, explicit unknowns, and enforced classification rules.
+
+**Product Toolkit is standalone.** It produces PRDs that stand on their own, and
+requires nothing else installed.
+[Architecture Toolkit](https://github.com/mmizin/architecture-toolkit) is an
+**optional downstream consumer**: if you use it, it reads the PRD and never
+writes to it. If you do not, nothing here changes. The diagram above shows where
+a PRD *can* go, not a dependency.
 
 ## Guiding principle
 
@@ -147,10 +156,14 @@ time.
 ## Roadmap
 
 - **v0.1** — PRD contract, enforcement rules, `prd-engine`.
-- **v0.2** — `product-reviewer` agent for semantic review (this release);
-  deeper Mode B discovery.
-- **v0.3+** — requirements validation across multiple PRDs; explicit handoff
-  verification with Architecture Toolkit.
+- **v0.2** — `product-reviewer` agent for semantic review.
+- **v0.3** — handoff verification against Architecture Toolkit (this release).
+- **v0.4** — external user validation. No new features: can someone who did not
+  build this produce a usable PRD from the README alone? Everything so far was
+  validated by its own author against one subject, which is the largest
+  untested assumption in the project.
+- **v0.5+** — cross-PRD requirements validation; shared handoff contract if
+  B-003 justifies one.
 
 Deliberately not in scope: roadmaps, personas, user research, analytics,
 backlog management.

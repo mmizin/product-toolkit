@@ -35,6 +35,12 @@ Out of scope (permanently):
 Product Toolkit and [Architecture Toolkit](https://github.com/mmizin/architecture-toolkit)
 are separate tools connected by one shared artifact.
 
+**The dependency is one-directional and optional.** Product Toolkit is complete
+on its own: a PRD is a useful artifact whether or not anything downstream reads
+it. Architecture Toolkit is a consumer, not a requirement — nothing in this
+repository imports it, checks for it, or degrades without it. Designing for a
+consumer is not the same as depending on one.
+
 ```
 Product Toolkit
         |
