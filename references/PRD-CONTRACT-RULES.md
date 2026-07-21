@@ -83,6 +83,10 @@ same validation cycle that produced this document.
 **Check:** only the two relationship fields appear; no BR is referenced from a
 `Related:` field.
 
+**Origin:** F-006 in `docs/examples/architecture-discovery/FINDINGS.md` — the
+`Governed by:` field was invented mid-fill and undefined; formalizing it is what
+capped the set at two.
+
 ## R-006: No inverse relationship duplication
 
 - A link is stored on exactly one side. The FR declares `Governed by:` and that
@@ -94,6 +98,9 @@ Storing a link on both sides creates two copies of one fact with no mechanism
 to detect divergence.
 
 **Check:** no BR carries an `Applies to:` field.
+
+**Origin:** F-007 in `docs/examples/architecture-discovery/FINDINGS.md` — found
+while applying F-006, when BRs were seen carrying the inverse of the same link.
 
 ## R-007: Failure Condition attachment
 

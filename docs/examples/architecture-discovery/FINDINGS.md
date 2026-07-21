@@ -1,5 +1,10 @@
 # Template Validation Findings
 
+A closed validation experiment, not a changelog. It records three fill passes
+that hardened `templates/PRD.md`, and it stopped when a pass found only the
+consequences of its own fix. Future validation runs open a new findings file
+rather than appending a pass here.
+
 Result of filling `templates/PRD.md` for `architecture-discovery` (Mode B,
 reverse engineered from Architecture Toolkit v0.1, source only — no users, no
 telemetry, no tracker).
