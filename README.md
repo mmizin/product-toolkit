@@ -113,6 +113,7 @@ product-toolkit/
 │   │   ├── VISION.md
 │   │   ├── ENGINE-VALIDATION.md
 │   │   ├── REVIEWER-VALIDATION.md
+│   │   ├── HANDOFF-VALIDATION.md
 │   │   └── BACKLOG.md
 │   ├── examples/
 │   │   └── architecture-discovery/     ← validation fixture, not a feature
