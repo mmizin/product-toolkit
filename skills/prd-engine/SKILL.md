@@ -44,7 +44,7 @@ never a third option.
 **Not responsible for:**
 - deciding *how* the system is built — no architecture, no technology choice
 - judging whether the product idea is sound, the scope right, or the goals
-  worth pursuing (`product-reviewer`'s job, once it exists)
+  worth pursuing (delegated to `product-reviewer`)
 - detecting contradictions between requirements, or assessing whether metrics
   are realistic — semantic judgement, not contract compliance
 - roadmaps, personas, user research, analytics, backlog management

@@ -43,7 +43,8 @@ must never displace a real weakness.
   A missing threshold, a BR restated as an acceptance criterion, or a
   backfilled ID gap is a conformance failure, not a review finding. Say so and
   stop rather than reviewing a non-conformant document.
-- Architecture Toolkit — when the real question is architectural: whether a
+- Architecture Toolkit (external — outside this toolkit; hand off to the user
+  if it is not available) — when the real question is architectural: whether a
   design can meet the requirements, not whether the requirements are sound.
 - the user — when you cannot assess without domain context only they have.
 
@@ -68,6 +69,8 @@ If a finding could be produced by reading the contract rules alone, it is not a
 review finding.
 
 ## How you review
+
+Expected input: a PRD produced by `prd-engine`.
 
 Assess against `references/product-review-checklist.md` — six dimensions:
 problem quality, requirement quality, scope, risk, completeness of inquiry, and

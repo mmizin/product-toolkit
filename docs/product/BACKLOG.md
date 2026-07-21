@@ -5,6 +5,10 @@ version planning.
 
 ## B-001: Confidence assessment as a Product Reviewer capability
 
+**Status:** Delivered in v0.2. All three candidate-scope items are implemented
+in `agents/product-reviewer.md` — confidence against evidence, requirements
+asserted without a source, and unowned load-bearing assumptions.
+
 **From:** F-011, Phase 1.3 validation.
 
 Both reverse-engineered PRDs independently produced the same system-level
