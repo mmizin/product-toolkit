@@ -1,7 +1,7 @@
 # <Feature Name>
 
 <!--
-Architecture-aware PRD.
+Architecture-consumable PRD.
 This document is consumed by Architecture Toolkit. Structure is a contract:
 - Requirement IDs are stable and never reused.
 - Sections marked REQUIRED must be present, even if the content is "None".
@@ -98,7 +98,7 @@ REQUIRED.
 
 ## Functional Requirements
 
-REQUIRED. Primary input to arc42 Context. Implementation-independent.
+REQUIRED. Primary input to Architecture Toolkit. Implementation-independent.
 
 <!-- Requirement lifecycle. Applies to FR, NFR, BR, and FC alike.
 
