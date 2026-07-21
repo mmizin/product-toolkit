@@ -105,4 +105,98 @@ change needs its own validation cycle.
 
 ## Result
 
-Not yet run.
+**Run 2026-07-21. Verdict: passes with two contract defects.**
+
+Drafted arc42 §1, §2, §3, §10, §11 and one ADR from the PRD alone. Artifacts in
+the session scratchpad.
+
+### Against the success criteria
+
+| | Criterion | Result |
+|---|---|---|
+| S-1 | No invention | **Pass** — every unfillable point surfaced as a question |
+| S-2 | No manual translation | **Fail** — two mappings need a human, see D-1 and D-2 |
+| S-3 | Traceability holds | **Pass** — every cited ID resolved unambiguously |
+| S-4 | Unmeasurable NFRs stay unmeasurable | **Pass** — all three arrived open |
+| S-5 | Failure Conditions survive | **Pass** — including FC-004's "no mitigation" |
+
+S-4 was the sharpest test and it held cleanly. The PRD's three NFRs became three
+arc42 quality scenarios that each carry their source NFR and blocking question
+forward, and none acquired a number in transit. §10 is a table of three open
+scenarios — which is the honest state of that system's quality requirements.
+
+S-3 held under real load. ADR-0001 cites fourteen requirement IDs across seven
+namespaces (FR, BR, NFR, C, FC, A, Q, G) and every one resolved to exactly one
+requirement. Stable IDs paid off precisely where they were designed to.
+
+S-5 is worth noting: FC-004 arrived in §11 with its "**None.** Nothing detects
+the failure" mitigation intact rather than being softened into something
+actionable. The failure condition survived contact with a template that expects
+mitigations.
+
+### D-1 — `PRD Goals → arc42 quality goals` does not hold (F-2)
+
+The protocol's own mapping table was wrong.
+
+arc42 §1 asks for the top 3–5 **quality goals** — quality attributes with
+priority. The PRD's Goals are product outcomes ("surface decisions that were
+never recorded"). These are different things, and one does not convert into the
+other.
+
+The quality goals would have to come from NFRs — which in this PRD are all open
+questions, so §1's quality-goals table is three open items with no priorities.
+Defensible for this system, but the mapping is broken in general: a PRD with
+measurable NFRs would fill §1 from NFRs, not from Goals.
+
+**This is a contract-level finding.** It was written into the protocol as an
+expected mapping and only failed on contact. Not fixed here — a mapping change
+needs its own cycle.
+
+### D-2 — Business Rules have two plausible arc42 homes (F-2)
+
+BR-001 ("never invent architecture") is a cross-cutting concept, §8. BR-002 and
+BR-003 constrain the analysis method and read as constraints, §2.
+
+Neither the PRD nor arc42 distinguishes, so a human decides — and two people
+will decide differently. This is the same class of defect as F-002 and F-003 in
+Phase 0: an ambiguity that does not announce itself, resolved silently and
+inconsistently.
+
+### Content with no arc42 home
+
+Not failures, but losses worth recording:
+
+| PRD content | Status |
+|---|---|
+| User Stories | No home. Content survives via FRs; the stories do not transfer. |
+| Success Metrics | No home — correct, these are product concerns |
+| Non Goals | **No home, and this is a real loss.** Non Goals prevent architecture over-reach, which is precisely the risk in §4 Solution Strategy. |
+| Data Requirements | Partial — ownership and sensitivity fit §8; retention has no home |
+| Integration criticality | Preserved only if the drafter chooses to keep it; §3 has no field |
+
+Non Goals is the one that matters. A PRD explicitly stating "mobile support is
+out of scope" hands architecture a boundary, and arc42 has nowhere to put it.
+
+### Verdict
+
+The core claim holds: **Architecture Toolkit can consume a Product Toolkit PRD,
+and the contract's most load-bearing properties survive the crossing.** Stable
+IDs make ADR traceability work. Unmeasurable NFRs stay unmeasurable. Failure
+conditions arrive intact.
+
+Two mappings need a human, and one of them was wrong in this document before the
+experiment ran. That is the value of fixing criteria in advance — D-1 would
+otherwise have been quietly reinterpreted as a success.
+
+### Open items
+
+Recorded, not fixed. Each needs its own validation cycle.
+
+- **D-1** — Correct the Goals → §1 mapping. Quality goals derive from NFRs;
+  product Goals feed the requirements overview.
+- **D-2** — Decide whether a Business Rule declares its own kind, or whether the
+  consumer decides. Same shape as the Phase 0 classification ambiguities, which
+  were resolved by adding a decision rule.
+- **D-3** — Non Goals has no architecture destination. Either accept the loss
+  explicitly, or raise it with Architecture Toolkit as a template gap on their
+  side.
