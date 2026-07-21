@@ -76,7 +76,7 @@ Consequences:
 
 Changing the template is a breaking change for Architecture Toolkit.
 
-The template defines the shape; `docs/product/PRD-CONTRACT-RULES.md` defines the
+The template defines the shape; `references/PRD-CONTRACT-RULES.md` defines the
 rules the engine must enforce. A PRD with every section filled is not
 conformant — classification and relationship rules are the part a generator
 violates while producing a document that looks complete.
@@ -104,12 +104,16 @@ The **Product Toolkit repository** contains the tool:
 
 ```
 product-toolkit/
-├── templates/PRD.md            ← the contract
-├── skills/prd-engine/          ← the implementation
-├── agents/
-├── docs/product/VISION.md
-└── docs/examples/<name>/PRD.md ← test fixtures, not features
+├── templates/PRD.md               ← output shape        (runtime)
+├── references/PRD-CONTRACT-RULES.md ← governance        (runtime)
+├── skills/prd-engine/             ← the implementation
+├── docs/product/                  ← human-facing only
+└── docs/examples/<name>/PRD.md    ← test fixtures, not features
 ```
+
+`templates/` and `references/` are loaded by the skill on every operation.
+`docs/` is never read at execution time. A runtime dependency living under
+`docs/` would break silently when documentation is pruned.
 
 The **consuming project's repository** contains the output:
 
@@ -150,8 +154,8 @@ The first capability is not a generator. It is an engine over one artifact:
 
 - **Create** — PRD for functionality that does not exist yet
 - **Recover** — PRD reverse engineered from an existing system
-- **Validate** — check requirements for completeness and testability
-- **Hand off** — produce valid input for Architecture Toolkit
+- **Update** — revise an existing PRD while preserving ID stability
+- **Validate** — conformance against the contract rules
 
 Generation is one of four operations, which is why the capability is named
 Product Requirement Engine rather than PRD Generator.
@@ -159,14 +163,15 @@ Product Requirement Engine rather than PRD Generator.
 ## Build order
 
 ```
-Phase 0 — Contract        VISION.md, templates/PRD.md   ← current
-Phase 1 — Plugin skeleton .claude-plugin/, structure
-Phase 2 — Engine          skills/prd-generator/
-Phase 3 — Review          agents/product-reviewer.md
+Phase 0 — Contract         VISION.md, templates/PRD.md,
+                           references/PRD-CONTRACT-RULES.md      ✅
+Phase 1 — Engine           .claude-plugin/, skills/prd-engine/   ✅
+Phase 2 — Review           agents/product-reviewer.md            ← next
 ```
 
 The reviewer comes last by design: a reviewer can only check against a standard
-that already exists.
+that already exists. It owns semantic judgement only — contract validation stays
+in the engine.
 
 ## Output layout
 

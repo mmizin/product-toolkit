@@ -17,7 +17,7 @@ that is already decided — it enforces the contract while producing one.
 The contract has two parts, and both are loaded before any operation:
 
 - `templates/PRD.md` — the shape a PRD takes
-- `docs/product/PRD-CONTRACT-RULES.md` — rules R-001 through R-010
+- `references/PRD-CONTRACT-RULES.md` — rules R-001 through R-012
 
 ## Guiding principle
 
@@ -38,7 +38,7 @@ never a third option.
 - creating a PRD for functionality that does not yet exist (Mode A)
 - reverse engineering a PRD from an existing system (Mode B)
 - updating an existing PRD as understanding or the system changes
-- validating a PRD against contract rules R-001…R-010
+- validating a PRD against contract rules R-001…R-012
 - surfacing what could not be determined, as Open Questions and Assumptions
 
 **Not responsible for:**
@@ -79,7 +79,7 @@ If a check requires judgement to answer, it is not a contract check.
 | **Create** | A feature description | PRD (Mode A) + Open Questions |
 | **Recover** | An existing system | PRD (Mode B) + Open Questions |
 | **Update** | An existing PRD + what changed | Revised PRD + changed-ID summary |
-| **Validate** | An existing PRD | Conformance report against R-001…R-010 |
+| **Validate** | An existing PRD | Conformance report against R-001…R-012 |
 
 Generation is one of four. The skill is an engine over the artifact, not a
 document generator.
@@ -126,7 +126,7 @@ invents current behavior or refuses to state intent.
 
 ### 2. Load the contract
 
-Read `templates/PRD.md` and `docs/product/PRD-CONTRACT-RULES.md` before
+Read `templates/PRD.md` and `references/PRD-CONTRACT-RULES.md` before
 writing. Do not reproduce a PRD structure from memory; the template is the
 authority and it changes.
 

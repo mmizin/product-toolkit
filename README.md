@@ -5,9 +5,9 @@ functionality, reverse engineers them from systems that already exist, and
 validates them against a fixed contract — so the output is a structured artifact
 architecture tooling can consume, not prose.
 
-> **Status: v0.1 — contract defined, engine in progress.** The PRD contract and
-> its enforcement rules are complete and validated against a real system. The
-> `prd-engine` skill is being implemented against them.
+> **Status: v0.1 — contract and engine complete.** The PRD contract, its twelve
+> enforcement rules, and the `prd-engine` skill are implemented and validated
+> against a real system across all four operations.
 
 ## The idea
 
@@ -54,7 +54,7 @@ operations:
 | Create | A feature description | PRD (Mode A) + Open Questions |
 | Recover | An existing system | PRD (Mode B) + Open Questions |
 | Update | An existing PRD + what changed | Revised PRD + changed-ID summary |
-| Validate | An existing PRD | Conformance report against R-001…R-010 |
+| Validate | An existing PRD | Conformance report against R-001…R-012 |
 
 **Validation here means contract compliance, not product review.** "NFR-003 has
 no threshold" is a contract finding. "NFR-003's threshold is unrealistic"
@@ -65,7 +65,7 @@ If a check needs judgement to answer, it is not a contract check.
 | Artifact | Role |
 |---|---|
 | `templates/PRD.md` | The shape a PRD takes |
-| `docs/product/PRD-CONTRACT-RULES.md` | The rules the engine enforces (R-001…R-010) |
+| `references/PRD-CONTRACT-RULES.md` | The rules the engine enforces (R-001…R-012) |
 | `docs/product/VISION.md` | Purpose, scope, boundaries |
 
 Filling every section is **not** conformance. The classification and
@@ -81,15 +81,24 @@ product-toolkit/
 ├── skills/
 │   └── prd-engine/SKILL.md
 ├── templates/
-│   └── PRD.md                          ← the contract
+│   └── PRD.md                          ← output shape
+├── references/
+│   └── PRD-CONTRACT-RULES.md           ← runtime governance
 ├── docs/
-│   ├── product/
+│   ├── product/                        ← human-facing only
 │   │   ├── VISION.md
-│   │   └── PRD-CONTRACT-RULES.md
-│   └── examples/
-│       └── architecture-discovery/     ← validation fixture, not a feature
+│   │   ├── ENGINE-VALIDATION.md
+│   │   └── BACKLOG.md
+│   ├── examples/
+│   │   └── architecture-discovery/     ← validation fixture, not a feature
+│   └── history/
 └── README.md
 ```
+
+`templates/` and `references/` are **runtime inputs** — the skill loads both on
+every operation. `docs/` is for humans and is never read at execution time.
+Keeping that split explicit means pruning documentation cannot silently break
+the engine.
 
 Note the boundary: PRDs this plugin *generates* live in the consuming project at
 `docs/features/<feature>/PRD.md`. Anything under `docs/examples/` here is a test
