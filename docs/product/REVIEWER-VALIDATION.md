@@ -83,8 +83,23 @@ The worked comparison table (`"NFR-003 has no threshold"` vs `"NFR-003's 50ms
 threshold is unachievable given C-002"`) did more to hold the line than the
 prose rules. Concrete pairs beat principles here.
 
-**No action.** Recorded because it is the thing to watch when the reviewer is
-used for real.
+**Resolved as a rule, not a capability.** Every Defect, Possible defect, and Gap
+must state evidence, impact, and a recommendation. A finding without impact is
+an observation; one without a recommendation is a complaint. Both are cheap to
+generate in quantity, which is exactly what volume-driven review produces.
+
+Deliberately *not* built: reviewer self-validation. Reviewing the reviewer's
+reviews regresses without terminating, and each layer is less grounded than the
+one below it. A structural requirement on findings does the same work at the
+point of production, where the author still has the evidence in hand.
+
+**Note on the two reviews above:** both predate this rule and collect
+recommendations in a separate section rather than attaching one to each finding.
+Their findings carry evidence and impact, but a reader must cross-reference to
+learn what to do about any given one. Re-running them under the rule would
+restructure the output, not change the substance. Recorded rather than
+retrofitted — the reviews are evidence of what the agent produced at the time,
+and editing them would destroy that.
 
 ### F-013: "Cannot assess" needs to be genuinely acceptable, not nominally available
 

@@ -99,8 +99,15 @@ penalize honesty; penalize false certainty.
 2. **Summary** — one paragraph.
 3. **Findings** — classified by kind (Defect / Possible defect / Gap /
    Recommendation / Info) and, for Defects and Gaps, severity (Critical / High /
-   Medium / Low). Most severe first. Cite requirement IDs so findings are
-   actionable and traceable.
+   Medium / Low). Most severe first.
+
+   Every Defect, Possible defect, and Gap states **evidence, impact, and a
+   recommendation** — see the checklist. A finding without impact is an
+   observation; one without a recommendation is a complaint. Both inflate a
+   report while making it less useful.
+
+   Prefer three findings that meet that bar to ten that do not. Report count is
+   not a measure of review quality.
 4. **Strengths** — only where they materially increase confidence, stated
    concretely. Omit the section entirely rather than padding it with courtesy.
 5. **Recommendations** — specific and applicable by the author.

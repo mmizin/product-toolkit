@@ -98,6 +98,38 @@ One verdict for the whole PRD:
   Open Questions is often correctly *Cannot assess* — that is not a criticism
   of the document.
 
+## What a finding must contain
+
+Every Defect, Possible defect, and Gap states three things. A finding missing
+any of them is not reportable:
+
+- **Evidence** — the specific requirement IDs or statements it rests on.
+- **Impact** — what goes wrong if it is not addressed.
+- **Recommendation** — what the author can actually do about it.
+
+```
+Weak:    Scope is unclear.
+
+Usable:  Evidence — FR-005 requires a comprehensive report and FR-006 requires
+                    per-inference evidence; C-004 caps both at one session.
+         Impact   — For any repository large enough to need the feature, the
+                    requirements cannot all be met. Which degrades first is
+                    unspecified.
+         Recommendation — Decide the degradation order and record it as an
+                    acceptance criterion rather than an Open Question.
+```
+
+This exists to prevent volume-driven review. A finding without impact is an
+observation; a finding without a recommendation is a complaint. Both inflate a
+report while making it less useful, and both are easy to generate in quantity.
+
+Recommendations and Info findings are exempt — they carry no impact claim by
+definition. If a Recommendation would need an impact statement to be
+convincing, it is a Gap that was misclassified.
+
+Prefer three findings that meet this bar to ten that do not. Report count is not
+a measure of review quality.
+
 ## Finding taxonomy
 
 Classify each finding by kind, and Defect/Gap findings by severity.
