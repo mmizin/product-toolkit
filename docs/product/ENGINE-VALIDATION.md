@@ -5,6 +5,10 @@ and live in the session scratchpad; findings are here.
 
 Purpose: prove the engine executes the contract, not that it writes well.
 
+Rules cited here are defined in `references/PRD-CONTRACT-RULES.md`. Counts below
+are historical: the contract held ten rules during the tests and twelve after
+the resolutions at the end of this document.
+
 ## Test 1 — Mode A Create
 
 **Input:** "Add PRD export to Markdown." One line, deliberately no interview
@@ -78,7 +82,8 @@ uncovered failure mode. That is a pattern worth naming, not a coincidence.
 FR-003 to produce a tidy sequence — was refused. Tidiness is not worth silently
 redefining an ID that external ADRs may cite.
 
-Conformance re-run after the update: ten of ten.
+Conformance re-run after the update: ten of ten, against the ten-rule contract
+in force at the time.
 
 ## Findings
 
@@ -143,8 +148,8 @@ this in pass one rather than pass three.
 | Mode B Recover | Pass — and found a real defect in the analyzed system |
 | Update | Pass — ID stability held against the tidiness temptation |
 
-Contract violations found: **none**. The engine executed all ten rules across
-three operations.
+Contract violations found: **none**. The engine executed all ten rules then in
+force across three operations.
 
 Open items: F-008 (retirement form — blocks repeatable Update), F-009 (orphan
 rule), F-010 (Mode A emit-vs-refuse decision), F-011 (optional prompt).
