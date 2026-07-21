@@ -23,8 +23,9 @@ a real system?" Four signals, per `docs/product/VISION.md`:
 | "this is architecture, not product" | Boundary between toolkits is wrong |
 | "could go in two places" | Ambiguity — worse than a gap, it doesn't announce itself |
 
-Findings from this exercise are recorded in `FINDINGS.md`, not applied to the
-template directly. The template is not modified unless a real gap is confirmed.
+Findings from this exercise are recorded in [FINDINGS.md](./FINDINGS.md), not
+applied to the template directly. The template is not modified unless a real gap
+is confirmed.
 
 ## Do not
 
@@ -32,4 +33,6 @@ template directly. The template is not modified unless a real gap is confirmed.
 - Create `docs/features/` in this repository — that path belongs to consuming
   projects only.
 - Update this PRD to track changes in Architecture Toolkit. It is a snapshot
-  taken at v0.1 for a one-time validation, not maintained documentation.
+  taken at v0.1 for a one-time validation, not maintained documentation. The
+  Architecture Toolkit repository is authoritative; this is a frozen reading of
+  it. A later validation adds a new example rather than mutating this one.
