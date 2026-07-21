@@ -51,7 +51,8 @@ never a third option.
 
 **Escalates to:**
 - the user — whenever a fact is unknown. Always, before inferring.
-- Architecture Toolkit — when the question is architectural rather than
+- Architecture Toolkit (external — outside this toolkit; hand off to the user
+  if it is not available) — when the question is architectural rather than
   product. The PRD is the handoff artifact; this skill does not answer it.
 - `product-reviewer` — when the question is whether the product decisions are
   good, rather than whether the document obeys the contract. Judging the
@@ -183,7 +184,7 @@ Every gap becomes an Open Question (naming what it blocks) or an Assumption
 
 ### 7. Self-validate
 
-Run all ten checks before emitting. Report what fails rather than quietly
+Run all twelve contract checks (R-001…R-012) before emitting. Report what fails rather than quietly
 fixing it — a conformance failure is often a real gap in understanding, not a
 formatting error.
 
